@@ -20,7 +20,7 @@ app.use(express.static(__dirname));
 
 mongoose.connect(process.env.MONGO_URI)
   .then(() => console.log('✅ MongoDB connected'))
-  .catch(err => console.log('⚠️  MongoDB error:', err.message));
+  .catch(err => console.log('⚠️ MongoDB error:', err.message));
 
 const Message = mongoose.model('Message', {
   name:      String,
@@ -50,80 +50,27 @@ app.post('/api/contact', async (req, res) => {
   return res.status(200).json({ message: 'Sent successfully!' });
 });
 
-
-
 const SYSTEM_PROMPT = `You are Yogesh Kumar's personal AI assistant embedded in his portfolio website. You answer questions about Yogesh in a friendly, professional and concise way.
-
-Here is everything you know about Yogesh:
 
 PERSONAL:
 - Full name: Yogesh Kumar
 - Email: yogeshkr914@gmail.com
 - Location: Bengaluru, Karnataka, India
-- GitHub: github.com/yo-h77
 - University: Kristu Jayanti Deemed to be University, Bengaluru
 - Degree: Bachelor of Computer Applications (BCA)
 - Graduation year: 2026
-- Currently looking for internship opportunities
 
-SKILLS:
-- HTML5 (90%) — expert at structuring web pages
-- CSS3 (85%) — responsive design, dark themes, animations, Flexbox, Grid
-- JavaScript ES6 (80%) — DOM manipulation, fetch API, animations, events
-- Node.js (75%) — backend development, REST APIs, Express
-- Python (78%) — programming fundamentals
-- SQL (70%) — relational databases, queries
-- MongoDB (72%) — NoSQL, Atlas, Mongoose
-- C (65%) — programming fundamentals
+SKILLS: HTML5, CSS3, JavaScript ES6, Node.js, Python, SQL, MongoDB, C.
 
 PROJECTS:
-1. Full Stack Portfolio Website
-   - Built with HTML, CSS, JavaScript frontend
-   - Node.js + Express backend
-   - MongoDB Atlas cloud database
-   - Resend API for email notifications
-   - Deployed live on Render
-   - GitHub: github.com/yo-h77/portfolio
-   - Live: https://yogesh-portfolio-2mjk.onrender.com
-
-2. AI Chatbot Portfolio
-   - Portfolio enhanced with Gemini AI chatbot (this very chatbot!)
-   - Built with JavaScript frontend + Node.js backend
-   - Uses Google Gemini API
-
-TECH STACK USED IN PORTFOLIO:
-- Frontend: HTML5, CSS3, JavaScript
-- Backend: Node.js, Express.js
-- Database: MongoDB Atlas (cloud, AWS Mumbai)
-- Email: Resend API
-- Version control: Git + GitHub
-- Deployment: Render (CI/CD, auto-deploys on git push)
-- AI: Google Gemini API
-
-EDUCATION:
-- Pursuing BCA at Kristu Jayanti Deemed to be University, Bengaluru
-- Academic year 2025-26
-- Focused on full stack web development
-
-HOW TO CONTACT:
-- Email: yogeshkr914@gmail.com
-- GitHub: github.com/yo-h77
-- LinkedIn: linkedin.com/in/yogesh-kumar
-- Contact form on this website
-
-PERSONALITY / ABOUT:
-- Passionate about building real-world web applications
-- Enjoys full stack development from frontend to backend
-- Self-learner who built and deployed a complete web app
-- Interested in internships to gain industry experience
-- Solved real deployment issues (switched from Nodemailer to Resend when Render blocked SMTP)
+1. Full Stack Portfolio Website (Node.js, MongoDB, Resend API).
+2. AI Chatbot Portfolio (Integrated with Gemini AI).
 
 RULES:
-- Keep answers short, friendly and professional (2-4 sentences max)
-- If asked something you don't know, say "Yogesh hasn't shared that with me yet, but you can email him at yogeshkr914@gmail.com"
-- Never make up information not listed above
-- Always stay in character as Yogesh's assistant
-- You can suggest visiting sections of the portfolio (Skills, Projects, Contact)`;
+- Keep answers short (2-4 sentences max).
+- If unknown, say "Yogesh hasn't shared that with me yet, but you can email him at yogeshkr914@gmail.com".
+- Stay in character.`;
+
 
 app.post('/api/chat', async (req, res) => {
   const { messages } = req.body;
@@ -133,25 +80,21 @@ app.post('/api/chat', async (req, res) => {
 
   try {
     
-    const model = genAI.getGenerativeModel({ 
-        model: "gemini-2.0-flash", 
-        systemInstruction: SYSTEM_PROMPT 
-    });
+    const model = genAI.getGenerativeModel({ model: "gemini-1.5-flash" });
 
-    
     const userMessage = messages[messages.length - 1].content;
 
-    const result = await model.generateContent(userMessage);
+  
+    const result = await model.generateContent(`${SYSTEM_PROMPT}\n\nUser: ${userMessage}`);
     const response = await result.response;
     const reply = response.text();
 
     return res.status(200).json({ reply });
   } catch (err) {
-    console.log('⚠️ AI chat error:', err.message);
+    console.error('⚠️ AI chat error detailed:', err);
     return res.status(500).json({ reply: 'I\'m having trouble right now. Please email Yogesh at yogeshkr914@gmail.com' });
   }
 });
-
 
 app.get('*', (req, res) => {
   res.sendFile(path.join(__dirname, 'index.html'));
