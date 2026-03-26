@@ -1,0 +1,309 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8"/>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Yogesh Kumar — Full Stack Developer</title>
+  <link rel="stylesheet" href="style.css"/>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css"/>
+</head>
+<body>
+
+  
+  <canvas id="bgCanvas"></canvas>
+
+  
+  <div class="cursor" id="cursor"></div>
+  <div class="cursor-dot" id="cursorDot"></div>
+
+  
+  <nav id="nav">
+    <div class="nav-logo">YK</div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#home">Home</a></li>
+      <li><a href="#about">About</a></li>
+      <li><a href="#skills">Skills</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+    <button class="hamburger" id="hamburger" aria-label="Menu">
+      <span></span><span></span><span></span>
+    </button>
+  </nav>
+
+
+  <section id="home" class="hero">
+    <div class="hero-inner">
+      <div class="hero-badge">
+        <span class="badge-dot"></span>
+        Available for Internships
+      </div>
+      <h1 class="hero-title">
+        <span class="title-line">Yogesh</span>
+        <span class="title-line outline">Kumar</span>
+      </h1>
+      <p class="hero-role">Full Stack Developer <span class="role-sep">×</span> BCA Student</p>
+      <p class="hero-desc">
+        Building the web from frontend to backend.<br/>
+        Kristu Jayanti Deemed to be University, Bengaluru.
+      </p>
+      <div class="hero-actions">
+        <a href="#projects" class="cta-primary">View My Work</a>
+        <a href="#contact" class="cta-secondary">Get In Touch</a>
+      </div>
+      <div class="hero-stats">
+        <div class="stat"><span class="stat-num">8+</span><span class="stat-label">Technologies</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-num">2</span><span class="stat-label">Live Projects</span></div>
+        <div class="stat-divider"></div>
+        <div class="stat"><span class="stat-num">2026</span><span class="stat-label">BCA Graduate</span></div>
+      </div>
+    </div>
+    <div class="hero-scroll">
+      <div class="scroll-track"></div>
+      <span>Scroll</span>
+    </div>
+  </section>
+
+  
+  <section id="about" class="about">
+    <div class="container">
+      <div class="section-label">01 — About</div>
+      <h2 class="section-title">Who I Am</h2>
+      <div class="about-grid">
+        <div class="about-text">
+          <p>I'm a BCA student at <strong>Kristu Jayanti Deemed to be University</strong>, Bengaluru, with a strong passion for full stack web development. I enjoy building real-world applications that connect beautiful frontends to powerful backends.</p>
+          <p>I've worked across the entire web development stack — from crafting responsive UIs with HTML, CSS and JavaScript to building REST APIs with Node.js and connecting them to cloud databases using MongoDB Atlas.</p>
+          <p>Currently looking for internship opportunities where I can contribute, learn, and grow as a developer.</p>
+          <div class="about-links">
+            <a href="https://github.com/yo-h77" target="_blank" class="about-link"><i class="fab fa-github"></i> GitHub</a>
+            <a href="https://linkedin.com/in/yogesh-kumar" target="_blank" class="about-link"><i class="fab fa-linkedin"></i> LinkedIn</a>
+          </div>
+        </div>
+        <div class="about-cards">
+          <div class="info-card">
+            <i class="fas fa-graduation-cap"></i>
+            <div>
+              <h4>Education</h4>
+              <p>BCA — Kristu Jayanti Deemed to be University</p>
+            </div>
+          </div>
+          <div class="info-card">
+            <i class="fas fa-map-marker-alt"></i>
+            <div>
+              <h4>Location</h4>
+              <p>Bengaluru, Karnataka, India</p>
+            </div>
+          </div>
+          <div class="info-card">
+            <i class="fas fa-envelope"></i>
+            <div>
+              <h4>Email</h4>
+              <p>yogeshkr914@gmail.com</p>
+            </div>
+          </div>
+          <div class="info-card">
+            <i class="fas fa-code"></i>
+            <div>
+              <h4>Focus</h4>
+              <p>Full Stack Web Development</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <section id="skills" class="skills">
+    <div class="container">
+      <div class="section-label">02 — Skills</div>
+      <h2 class="section-title">Tech Stack</h2>
+      <div class="skills-grid">
+        <div class="skill-card" data-skill="HTML" data-level="90">
+          <div class="skill-icon-wrap"><i class="fab fa-html5"></i></div>
+          <span class="skill-name">HTML5</span>
+          <div class="skill-track"><div class="skill-bar" data-w="90"></div></div>
+        </div>
+        <div class="skill-card" data-skill="CSS" data-level="85">
+          <div class="skill-icon-wrap"><i class="fab fa-css3-alt"></i></div>
+          <span class="skill-name">CSS3</span>
+          <div class="skill-track"><div class="skill-bar" data-w="85"></div></div>
+        </div>
+        <div class="skill-card" data-skill="JS" data-level="80">
+          <div class="skill-icon-wrap"><i class="fab fa-js-square"></i></div>
+          <span class="skill-name">JavaScript</span>
+          <div class="skill-track"><div class="skill-bar" data-w="80"></div></div>
+        </div>
+        <div class="skill-card" data-skill="Node" data-level="75">
+          <div class="skill-icon-wrap"><i class="fab fa-node-js"></i></div>
+          <span class="skill-name">Node.js</span>
+          <div class="skill-track"><div class="skill-bar" data-w="75"></div></div>
+        </div>
+        <div class="skill-card" data-skill="Python" data-level="78">
+          <div class="skill-icon-wrap"><i class="fab fa-python"></i></div>
+          <span class="skill-name">Python</span>
+          <div class="skill-track"><div class="skill-bar" data-w="78"></div></div>
+        </div>
+        <div class="skill-card" data-skill="SQL" data-level="70">
+          <div class="skill-icon-wrap"><i class="fas fa-database"></i></div>
+          <span class="skill-name">SQL</span>
+          <div class="skill-track"><div class="skill-bar" data-w="70"></div></div>
+        </div>
+        <div class="skill-card" data-skill="MongoDB" data-level="72">
+          <div class="skill-icon-wrap"><i class="fas fa-leaf"></i></div>
+          <span class="skill-name">MongoDB</span>
+          <div class="skill-track"><div class="skill-bar" data-w="72"></div></div>
+        </div>
+        <div class="skill-card" data-skill="C" data-level="65">
+          <div class="skill-icon-wrap"><i class="fas fa-terminal"></i></div>
+          <span class="skill-name">C</span>
+          <div class="skill-track"><div class="skill-bar" data-w="65"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  
+  <section id="projects" class="projects">
+    <div class="container">
+      <div class="section-label">03 — Projects</div>
+      <h2 class="section-title">What I've Built</h2>
+      <div class="projects-grid">
+
+        <div class="project-card featured">
+          <div class="project-glow"></div>
+          <div class="project-top">
+            <span class="project-num">01</span>
+            <div class="project-links">
+              <a href="https://github.com/yo-h77/portfolio" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+              <a href="https://yogesh-portfolio-2mjk.onrender.com" target="_blank" title="Live"><i class="fas fa-arrow-up-right-from-square"></i></a>
+            </div>
+          </div>
+          <h3>Full Stack Portfolio</h3>
+          <p>A complete personal portfolio with Node.js backend, MongoDB cloud database, Resend email API and CI/CD deployment on Render.</p>
+          <div class="project-tags">
+            <span>HTML</span><span>CSS</span><span>Node.js</span><span>MongoDB</span><span>Render</span>
+          </div>
+        </div>
+
+        <div class="project-card">
+          <div class="project-glow"></div>
+          <div class="project-top">
+            <span class="project-num">02</span>
+            <div class="project-links">
+              <a href="https://github.com/yo-h77/portfolio" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+              <a href="#" target="_blank" title="Live"><i class="fas fa-arrow-up-right-from-square"></i></a>
+            </div>
+          </div>
+          <h3>AI Chatbot Portfolio</h3>
+          <p>Portfolio enhanced with an AI assistant powered by Claude API. Ask it anything about me — skills, projects, contact — and get instant answers.</p>
+          <div class="project-tags">
+            <span>JavaScript</span><span>Node.js</span><span>Claude API</span><span>Express</span>
+          </div>
+        </div>
+
+        <div class="project-card add">
+          <i class="fas fa-plus"></i>
+          <p>More projects coming soon</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  
+  <section id="contact" class="contact">
+    <div class="container">
+      <div class="section-label">04 — Contact</div>
+      <h2 class="section-title">Let's Connect</h2>
+      <div class="contact-grid">
+        <div class="contact-info">
+          <h3>Yogesh Kumar</h3>
+          <p class="contact-sub">BCA Student · Full Stack Developer in the Making</p>
+          <div class="contact-items">
+            <a href="mailto:yogeshkr914@gmail.com" class="contact-item">
+              <i class="fas fa-envelope"></i>
+              <span>yogeshkr914@gmail.com</span>
+            </a>
+            <div class="contact-item">
+              <i class="fas fa-university"></i>
+              <span>Kristu Jayanti Deemed to be University</span>
+            </div>
+            <div class="contact-item">
+              <i class="fas fa-map-marker-alt"></i>
+              <span>Bengaluru, Karnataka</span>
+            </div>
+          </div>
+          <div class="socials">
+            <a href="https://github.com/yo-h77" target="_blank"><i class="fab fa-github"></i></a>
+            <a href="https://www.linkedin.com/in/yogesh-kumar-a1b8a636b?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=ios_app" target="_blank"><i class="fab fa-linkedin"></i></a>
+            <a href="https://instagram.com/_yo.h_" target="_blank"><i class="fab fa-instagram"></i></a>
+          </div>
+        </div>
+        <form id="contactForm" class="contact-form">
+          <div id="formMsg" class="form-msg"></div>
+          <div class="form-row">
+            <div class="form-group">
+              <label>Name</label>
+              <input type="text" name="name" placeholder="John Doe" required/>
+            </div>
+            <div class="form-group">
+              <label>Email</label>
+              <input type="email" name="email" placeholder="john@example.com" required/>
+            </div>
+          </div>
+          <div class="form-group">
+            <label>Message</label>
+            <textarea name="message" rows="5" placeholder="Let's work together..." required></textarea>
+          </div>
+          <button type="submit" id="submitBtn">
+            Send Message <i class="fas fa-paper-plane"></i>
+          </button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  
+  <footer>
+    <div class="container footer-inner">
+      <p>© 2026 <strong>Yogesh Kumar</strong> · Built with HTML, CSS, Node.js & Claude AI</p>
+      <a href="#home" class="back-top"><i class="fas fa-arrow-up"></i></a>
+    </div>
+  </footer>
+
+  
+  <div class="chat-widget" id="chatWidget">
+    <div class="chat-header">
+      <div class="chat-header-left">
+        <div class="chat-avatar">YK</div>
+        <div>
+          <div class="chat-name">Yogesh's AI Assistant</div>
+          <div class="chat-status"><span class="status-dot"></span> Online</div>
+        </div>
+      </div>
+      <button class="chat-close" id="chatClose"><i class="fas fa-xmark"></i></button>
+    </div>
+    <div class="chat-messages" id="chatMessages">
+      <div class="chat-msg bot">
+        <div class="msg-bubble">Hi! 👋 I'm Yogesh's AI assistant. Ask me anything about him — his skills, projects, education, or how to contact him!</div>
+      </div>
+    </div>
+    <div class="chat-input-row">
+      <input type="text" id="chatInput" placeholder="Ask about Yogesh..." />
+      <button id="chatSend"><i class="fas fa-paper-plane"></i></button>
+    </div>
+  </div>
+
+  <button class="chat-toggle" id="chatToggle" aria-label="Open chat">
+    <i class="fas fa-comment-dots" id="chatIcon"></i>
+    <i class="fas fa-xmark" id="chatCloseIcon" style="display:none"></i>
+    <span class="chat-badge">AI</span>
+  </button>
+
+  <script src="script.js"></script>
+</body>
+</html>
