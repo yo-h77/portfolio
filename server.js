@@ -1,16 +1,17 @@
-
 const express  = require('express');
 const mongoose = require('mongoose');
 const cors     = require('cors');
 const path     = require('path');
-const Anthropic = require('@anthropic-ai/sdk');
+const { GoogleGenerativeAI } = require('@google/generai'); 
 const { Resend } = require('resend');
 require('dotenv').config();
 
 const app    = express();
 const PORT   = process.env.PORT || 3000;
 const resend = new Resend(process.env.RESEND_API_KEY);
-const anthropic = new Anthropic({ apiKey: process.env.ANTHROPIC_API_KEY });
+
+
+const genAI = new GoogleGenerativeAI(process.env.GEMINI_API_KEY);
 
 app.use(cors());
 app.use(express.json());
@@ -86,9 +87,9 @@ PROJECTS:
    - Live: https://yogesh-portfolio-2mjk.onrender.com
 
 2. AI Chatbot Portfolio
-   - Portfolio enhanced with Claude AI chatbot (this very chatbot!)
+   - Portfolio enhanced with Gemini AI chatbot (this very chatbot!)
    - Built with JavaScript frontend + Node.js backend
-   - Uses Anthropic Claude API
+   - Uses Google Gemini API
 
 TECH STACK USED IN PORTFOLIO:
 - Frontend: HTML5, CSS3, JavaScript
@@ -97,7 +98,7 @@ TECH STACK USED IN PORTFOLIO:
 - Email: Resend API
 - Version control: Git + GitHub
 - Deployment: Render (CI/CD, auto-deploys on git push)
-- AI: Anthropic Claude API
+- AI: Google Gemini API
 
 EDUCATION:
 - Pursuing BCA at Kristu Jayanti Deemed to be University, Bengaluru
@@ -131,14 +132,19 @@ app.post('/api/chat', async (req, res) => {
   }
 
   try {
-    const response = await anthropic.messages.create({
-      model: 'claude-opus-4-5',
-      max_tokens: 300,
-      system: SYSTEM_PROMPT,
-      messages: messages.slice(-10) 
+    
+    const model = genAI.getGenerativeModel({ 
+        model: "gemini-1.5-flash",
+        systemInstruction: SYSTEM_PROMPT 
     });
 
-    const reply = response.content[0].text;
+    
+    const userMessage = messages[messages.length - 1].content;
+
+    const result = await model.generateContent(userMessage);
+    const response = await result.response;
+    const reply = response.text();
+
     return res.status(200).json({ reply });
   } catch (err) {
     console.log('⚠️ AI chat error:', err.message);
