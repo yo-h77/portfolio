@@ -2,7 +2,7 @@ const express  = require('express');
 const mongoose = require('mongoose');
 const cors     = require('cors');
 const path     = require('path');
-const { GoogleGenerativeAI } = require('@google/generai'); 
+const { GoogleGenerativeAI } = require('@google/generative-ai');
 const { Resend } = require('resend');
 require('dotenv').config();
 
